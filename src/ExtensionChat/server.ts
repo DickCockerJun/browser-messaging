@@ -11,7 +11,7 @@ import { getBrowserApi, deleteFromArray } from './utils.js';
 type PortMap = Map<string, Array<Runtime.Port>>;
 
 /**
- * Appends "portI" field to all event.data. You call pass it to send, response.
+ * Appends "portI" field to all event.data. You can pass it to send, response.
  * Based on runtime.Port.
  * Call init after constructor.
  */
