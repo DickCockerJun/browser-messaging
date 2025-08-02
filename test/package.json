@@ -1,0 +1,15 @@
+{
+  "name": "browser-messaging.test-build",
+  "version": "1.0.0",
+  "scripts": {
+    "build-module": "npm --prefix ../ run build",
+    
+    "build": "npm run build-module && webpack",
+    "build-m2": "npm run build -- --env m2"
+  },
+  "devDependencies": {
+    "terser-webpack-plugin": "^5.3.14",
+    "webpack-cli": "^6.0.1",
+    "webpack-extension-manifest-plugin": "^0.8.0"
+  }
+}

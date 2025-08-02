@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    /* Projects */
+    "incremental": true,
+    "tsBuildInfoFile": "./.tsbuildinfo",
+    "disableSolutionSearching": true,
+    "disableReferencedProjectLoad": true,
+
+    /* Language and Environment */
+    "target": "es6",
+    "lib": ["ES2015", "DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "preserve",
+    "useDefineForClassFields": true,
+
+    /* Modules */
+    "module": "NodeNext",
+    "rootDir": "./src",
+    "moduleResolution": "NodeNext",
+    "noUncheckedSideEffectImports": true,
+
+    /* Emit */
+    "declaration": true,
+    "outDir": "./dist",
+    "removeComments": false, // for JsDoc
+    "newLine": "lf",
+    "noEmitOnError": true,
+    "preserveConstEnums": true,
+
+    /* Interop Constraints */
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    "strict": true
+  }
+}
