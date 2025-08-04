@@ -1,6 +1,6 @@
 {
   "name": "browser-messaging",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript module for messaging between your modules",
   "license": "ISC",
   "author": "Dick Cocker",

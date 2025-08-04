@@ -2,6 +2,8 @@
 
 ## TypeScript module for messaging between your modules.
 
+[npmjs repo][https://www.npmjs.com/package/browser-messaging]
+
 Supports Manifest v2 and v3.
 Supports chrome and browser API.
 
