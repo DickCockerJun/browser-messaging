@@ -13,6 +13,15 @@ import { getBrowserApi } from './utils.js';
 export default class ExtensionChatClient extends Chat {
   protected port?: Runtime.Port;
   protected _connect: () => Runtime.Port;
+  protected _keepAlive = false;
+
+  get keepAlive() {
+    return this._keepAlive;
+  };
+  set keepAlive(value) {
+    if (value && this.port === undefined) this.connect();
+    this._keepAlive = value;
+  };
 
   /**
    * Call init after.
@@ -32,6 +41,7 @@ export default class ExtensionChatClient extends Chat {
     this.handleMessage = this.handleMessage.bind(this);
   };
   destroy(): void {
+    this._keepAlive = false;
     if (this.port !== undefined) this.port.disconnect();
     super.destroy();
   };
@@ -44,6 +54,7 @@ export default class ExtensionChatClient extends Chat {
     this.port = this._connect();
     this.port.onDisconnect.addListener(() => {
       this.port = undefined;
+      if (this.keepAlive) this.connect();
     });
     this.port.onMessage.addListener(this.handleMessage);
   };
