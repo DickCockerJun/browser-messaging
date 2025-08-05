@@ -62,6 +62,7 @@ export default class ExtensionChatServer extends Chat {
     }
     else {
       for (const port of ports) {
+        if (port === undefined) continue;
         port.postMessage(packet);
       };
     };
