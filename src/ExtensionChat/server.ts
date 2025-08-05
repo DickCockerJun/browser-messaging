@@ -3,6 +3,7 @@ import type { Runtime, Events } from 'webextension-polyfill';
 import type { SendSpecInfo } from '../Chat/types.js';
 import type { Packet } from '../Chat/events.js';
 import Chat from '../Chat/index.js';
+import { ChatRequest } from '../Chat/mods.js';
 import { getBrowserApi, deleteFromArray } from './utils.js';
 
 /**
@@ -47,6 +48,8 @@ export default class ExtensionChatServer extends Chat {
       };
     };
   };
+
+  request = ChatRequest.request;
 
   protected _send(packet: Packet.Unknown, specInfo: SendSpecInfo={}): void {
     const ports = this.ports.get(packet.to);
