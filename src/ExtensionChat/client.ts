@@ -46,7 +46,7 @@ export default class ExtensionChatClient extends Chat {
     super.destroy();
   };
 
-  request = ChatRequest.request;
+  request = ChatRequest.request.bind(this);
 
   protected connect(): void {
     if (this.port !== undefined) return;

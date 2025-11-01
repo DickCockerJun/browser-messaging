@@ -32,7 +32,7 @@ export default class WindowChat extends Chat {
   /**
    * Sends message and awaits response.
    */
-  request = ChatRequest.request;
+  request = ChatRequest.request.bind(this);
 
   protected _send(packet: Packet.Unknown): void {
     if (packet.type === 'message') {

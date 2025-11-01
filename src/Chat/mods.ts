@@ -28,7 +28,7 @@ export namespace ChatRequest {
   /**
    * Sends message and awaits response.
    */
-  export function request(this: Chat, to: string, message: string, data: JsonValue, specInfo: SendSpecInfo={}): Promise<JsonValue> {
+  export function request(this: Chat, to: string, message: string, data: JsonValue=null, specInfo: SendSpecInfo={}): Promise<JsonValue> {
     return new Promise(resolve => {
       let messageId = '';
 

@@ -49,7 +49,7 @@ export default class ExtensionChatServer extends Chat {
     };
   };
 
-  request = ChatRequest.request;
+  request = ChatRequest.request.bind(this);
 
   protected _send(packet: Packet.Unknown, specInfo: SendSpecInfo={}): void {
     const ports = this.ports.get(packet.to);
