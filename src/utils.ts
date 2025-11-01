@@ -3,7 +3,7 @@ import type { Payload } from './Chat/events.js';
 import type Chat from './Chat/index.js';
 
 // biome-ignore lint/suspicious/noConfusingVoidType: defaultHandler can be void
-type MessageHandler = (data: JsonValue, payload: Payload.Message) => JsonValue | undefined | Promise<JsonValue | undefined> | void;
+type MessageHandler = (data: JsonValue, payload: Payload.Message) => unknown | Promise<unknown>;
 
 /**
  * - adds message-listener;

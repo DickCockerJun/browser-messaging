@@ -29,13 +29,16 @@ export default abstract class Chat extends ChatEventTarget {
   };
 
   /**
+   * @param data JsonValue
    * @returns message-id
    */
-  send(to: string, message: string, data: JsonValue=null, specInfo: SendSpecInfo={}): string {
+  send(to: string, message: string, data: unknown=null, specInfo: SendSpecInfo={}): string {
     if (this.countMessagesTo[to] === undefined) this.countMessagesTo[to] = 0;
     const id = `${this.id}:${to}:${this.countMessagesTo[to]}`;
     this.countMessagesTo[to]++;
     
+    const dataTyped = data as JsonValue;
+
     const packet: Packet.Message = {
       type: 'message',
       chatId: this.chatId,
@@ -43,15 +46,20 @@ export default abstract class Chat extends ChatEventTarget {
       to,
       id,
       message,
-      data
+      data: dataTyped
     };
     this._send(packet, specInfo);
 
     return id;
   };
   
-  response(toMessage: string, data: JsonValue, specInfo: SendSpecInfo={}): void {
+  /**
+   * @param data JsonValue
+   */
+  response(toMessage: string, data: unknown, specInfo: SendSpecInfo={}): void {
     const to = toMessage.slice(0, toMessage.indexOf(':'));
+
+    const dataTyped = data as JsonValue;
 
     const packet: Packet.Response = {
       type: 'response',
@@ -59,7 +67,7 @@ export default abstract class Chat extends ChatEventTarget {
       from: this.id,
       to,
       toMessage,
-      data
+      data: dataTyped
     };
     this._send(packet, specInfo);
   };

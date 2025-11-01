@@ -6,7 +6,7 @@ import type Chat from './index.js';
  * Appends "request" method.
  * @example
  * class Example extends Chat {
- *   request = ChatRequest.request
+ *   request = ChatRequest.request.bind(this)
  * };
  * const test = new Example();
  * 
@@ -27,8 +27,9 @@ import type Chat from './index.js';
 export namespace ChatRequest {
   /**
    * Sends message and awaits response.
+   * @param data JsonValue
    */
-  export function request(this: Chat, to: string, message: string, data: JsonValue=null, specInfo: SendSpecInfo={}): Promise<JsonValue> {
+  export function request(this: Chat, to: string, message: string, data: unknown=null, specInfo: SendSpecInfo={}): Promise<JsonValue> {
     return new Promise(resolve => {
       let messageId = '';
 
@@ -69,8 +70,6 @@ export namespace ChatRequest {
  *     else send(packet);
  *   };
  * };
- * 
- * // average usage
  */
 export namespace ChatConfirm {
   type ThisChat = Chat & {
