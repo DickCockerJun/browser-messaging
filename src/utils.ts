@@ -1,9 +1,9 @@
-import type { JsonValue, SendSpecInfo } from './Chat/types.js';
+import type { SendSpecInfo } from './Chat/types.js';
 import type { Payload } from './Chat/events.js';
 import type Chat from './Chat/index.js';
 
 // biome-ignore lint/suspicious/noConfusingVoidType: defaultHandler can be void
-type MessageHandler = (data: JsonValue, payload: Payload.Message) => unknown | Promise<unknown>;
+type MessageHandler = (data: unknown, payload: Payload.Message) => unknown | Promise<unknown>;
 
 /**
  * - adds message-listener;

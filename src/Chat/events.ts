@@ -1,5 +1,3 @@
-import type { JsonValue } from './types.js';
-
 export namespace Payload {
   interface Base {
     from: string,
@@ -10,14 +8,14 @@ export namespace Payload {
   export interface Message  extends Base {
     id: string,
     message: string,
-    data: JsonValue
+    data: unknown
   };
   export interface Confirm  extends Base {
     toMessage: string
   };
   export interface Response extends Base {
     toMessage: string,
-    data: JsonValue
+    data: unknown
   };
 
   export type Unknown = Message | Confirm | Response;

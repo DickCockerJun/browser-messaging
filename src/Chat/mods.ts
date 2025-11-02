@@ -1,4 +1,4 @@
-import type { JsonValue, SendSpecInfo } from './types.js';
+import type { SendSpecInfo } from './types.js';
 import type { ChatEvent, Packet } from './events.js';
 import type Chat from './index.js';
 
@@ -29,7 +29,7 @@ export namespace ChatRequest {
    * Sends message and awaits response.
    * @param data JsonValue
    */
-  export function request(this: Chat, to: string, message: string, data: unknown=null, specInfo: SendSpecInfo={}): Promise<JsonValue> {
+  export function request(this: Chat, to: string, message: string, data: unknown=null, specInfo: SendSpecInfo={}): Promise<unknown> {
     return new Promise(resolve => {
       let messageId = '';
 
